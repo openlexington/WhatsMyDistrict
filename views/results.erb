@@ -1,1 +1,29 @@
-the results would be shown here.
+<table>
+  <tr>
+    <td>Council District:</td>
+    <td><%= @council[:district] %></td>
+    <td><%= @council[:rep] %></td>
+  </tr>
+  <tr>
+    <td>Magistrate District</td>
+    <td><%= @magistrate[:district] %></td>
+    <td><%= @magistrate[:rep] %></td>
+  </tr>
+  <tr>
+    <td>School Board District</td>
+    <td><%= @school_board[:district] %></td>
+    <td><%= @school_board[:rep] %></td>
+  </tr>
+  <tr>
+    <td>Elementary School District</td>
+    <td><%= @elem_school[:name] %></td>
+  </tr>
+  <tr>
+    <td>Middle School District</td>
+    <td><%= @middle_school[:sname] %></td>
+  </tr>
+  <tr>
+    <td>High School District</td>
+    <td><%= @high_school[:sname] %></td>
+  </tr>
+</table>

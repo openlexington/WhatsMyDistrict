@@ -3,6 +3,7 @@ GEM
   specs:
     daemons (1.1.9)
     eventmachine (1.0.3)
+    geocoder (1.1.8)
     pg (0.15.1)
     rack (1.5.2)
     rack-protection (1.5.0)
@@ -23,6 +24,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  geocoder
   pg
   rake
   sequel
