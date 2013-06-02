@@ -1,29 +1,63 @@
-<table>
-  <tr>
-    <td>Council District:</td>
-    <td><%= @council[:district] %></td>
-    <td><%= @council[:rep] %></td>
-  </tr>
-  <tr>
-    <td>Magistrate District</td>
-    <td><%= @magistrate[:district] %></td>
-    <td><%= @magistrate[:rep] %></td>
-  </tr>
-  <tr>
-    <td>School Board District</td>
-    <td><%= @school_board[:district] %></td>
-    <td><%= @school_board[:rep] %></td>
-  </tr>
-  <tr>
-    <td>Elementary School District</td>
-    <td><%= @elem_school[:name] %></td>
-  </tr>
-  <tr>
-    <td>Middle School District</td>
-    <td><%= @middle_school[:sname] %></td>
-  </tr>
-  <tr>
-    <td>High School District</td>
-    <td><%= @high_school[:sname] %></td>
-  </tr>
-</table>
+<div class="row">
+  <div class="span8 offset1">
+    <p class="lead">Here are your districts:</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8 offset2">
+    <table class="table">
+      <tr>
+        <td>Council District</td>
+        <td>
+          <dl class="dl-horizontal">
+            <dt>District:</dt>
+            <dd><%= @council[:district] %></dd>
+            <dt>Representative:</dt>
+            <dd><a href="<%= @council[:url]%>"><%= @council[:rep] %></a></dd>
+            <dt>Phone Number:</dt>
+            <dd><%= @council[:telephone] %></dd>
+            <dt>Email:</dt>
+            <dd><%= @council[:email] %></dd>
+          </dl>
+        </td>
+      </tr>
+      <tr>
+        <td>Magistrate District</td>
+        <td>
+          <dl class="dl-horizontal">
+            <dt>District:</dt>
+            <dd><%= @magistrate[:district] %></dd>
+            <dt>Representative:</dt>
+            <dd><%= @magistrate[:rep] %></dd>
+          </dl>
+        </td>
+      </tr>
+      <tr>
+        <td>School Board District</td>
+        <td>
+          <dl class="dl-horizontal">
+            <dt>District:</dt>
+            <dd><%= @school_board[:district] %></dd>
+            <dt>Representative:</dt>
+            <dd><%= @school_board[:rep] %></dd>
+          </dl>
+        </td>
+      </tr>
+      <tr>
+        <td>Elementary School District</td>
+        <td>
+          <%= @elem_school[:name] %>
+        </td>
+      </tr>
+      <tr>
+        <td>Middle School District</td>
+          <td><%= @middle_school[:sname] %></td>
+      </tr>
+      <tr>
+        <td>High School District</td>
+          <td><%= @high_school[:sname] %></td>
+      </tr>
+    </table>
+  </div>
+</div>

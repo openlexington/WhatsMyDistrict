@@ -1,9 +1,30 @@
-<h1>What's my district</h1>
 
-<form method="get" action="/results">
-  <fieldset>
-    <label>Search</label>
-    <input type="text" name="address" placeholder="560 E. Thrid St Lexington, KY" />
-    <button type="submit" class="btn">Submit</button>
-  </fieldset>
-</form>
+<div class="row">
+  <div class="span8 offset2 text-center">
+    <p class="lead">Look up your address to find what council, magistrate, school board, and
+      school districts you're in.
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="span8 offset2">
+    <form method="get" action="/results" class="form-horizontal">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label">Address</label>
+          <div class="controls">
+            <div class="input-append">
+              <input type="text" id="appendedInput" name="address" placeholder="560 E. Thrid St" >
+              <span class="add-on">Lexington, KY</span>
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
