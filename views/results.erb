@@ -87,11 +87,15 @@
       <tr>
         <td>Neighborhood Association</td>
         <td>
-          <ul>
-            <% @neighborhood.each do |assoc| %>
-            <li><%= assoc[:assoc_name] %></li>
-            <% end %>
-          </ul>
+          <% if @neighborhood.empty? || @neighborhood.first.empty? || @neighborhood.first[:assoc_name].empty?  %>
+            None
+          <% else %>
+            <ul>
+              <% @neighborhood.each do |assoc| %>
+              <li><%= assoc[:assoc_name] %></li>
+              <% end %>
+            </ul>
+          <% end %>
         </td>
       </tr>
     </table>
