@@ -8,6 +8,28 @@
   <div class="span8 offset2">
     <table class="table table-bordered table-striped">
       <tr>
+        <td>State Senate District</td>
+        <td>
+          <dl class="dl-horizontal">
+            <dt>District</dt>
+            <dd><%= @senate[:district] %></dd>
+            <dt>Representative</dt>
+            <dd><%= @senate[:rep] %></dd>
+          </dl>
+        </td>
+      </tr>
+      <tr>
+        <td>State House District</td>
+        <td>
+          <dl class="dl-horizontal">
+            <dt>District</dt>
+            <dd><%= @house[:district] %></dd>
+            <dt>Representative</dt>
+            <dd><%= @house[:rep] %></dd>
+          </dl>
+        </td>
+      </tr>
+      <tr>
         <td>Council District</td>
         <td>
           <dl class="dl-horizontal">
@@ -34,6 +56,10 @@
         </td>
       </tr>
       <tr>
+        <td>Voting District</td>
+        <td><%= @voting[:name] %></td>
+      </tr>
+      <tr>
         <td>School Board District</td>
         <td>
           <dl class="dl-horizontal">
@@ -57,6 +83,16 @@
       <tr>
         <td>High School District</td>
           <td><%= @high_school[:sname] %></td>
+      </tr>
+      <tr>
+        <td>Neighborhood Association</td>
+        <td>
+          <ul>
+            <% @neighborhood.each do |assoc| %>
+            <li><%= assoc[:assoc_name] %></li>
+            <% end %>
+          </ul>
+        </td>
       </tr>
     </table>
   </div>

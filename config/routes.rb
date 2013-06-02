@@ -19,6 +19,15 @@ class DistrictApp < Sinatra::Base
     @elem_school = DB["SELECT name from elementary where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
     @middle_school = DB["SELECT sname from middle where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
     @high_school = DB["SELECT sname from high where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
+    @senate = DB["SELECT district,rep from senate where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
+    @house = DB["SELECT district,rep from house where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
+    @voting = DB["SELECT name from voting where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
+    neighborhood_results = DB["SELECT assoc_name from neighborhood_assoc where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"]
+    unless neighborhood_results.empty?
+      @neighborhood = neighborhood_results
+    else
+      @neighborhood = [{assoc_name: ""}]
+    end
 
     erb :results
   end
