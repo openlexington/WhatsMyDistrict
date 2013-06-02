@@ -15,6 +15,10 @@ input#appendedInput {
     background-size: 180px 190px;
 }
 
+.footer {
+	margin-top:40px;
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2), 
 only screen and (min-device-pixel-ratio: 2) {
     /* on retina, use image that's scaled by 2 */
