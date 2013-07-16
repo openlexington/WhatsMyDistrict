@@ -36,7 +36,7 @@
             <dt>District:</dt>
             <dd><%= @council[:district] %></dd>
             <dt>Representative:</dt>
-            <dd><a href="<%= @council[:url]%>"><%= @council[:rep] %></a></dd>
+            <dd><a href="<%= @council[:url]%>"><%= @council[:rep].split.map {|n| n.capitalize}.join(' ') %></a></dd>
             <dt>Phone Number:</dt>
             <dd><%= @council[:telephone] %></dd>
             <dt>Email:</dt>
@@ -47,7 +47,7 @@
             <dt>Representative:</dt>
             <dd><a href="http://www.lexingtonky.gov/index.aspx?page=353">Linda Gorton, Vice Mayor</a></dd>
             <dt>Phone Number:</dt>
-            <dd>258-3211</dd>
+            <dd>(859) 258-3211</dd>
             <dt>Email:</dt>
             <dd><a href="mailto:lgorton@lexingtonky.gov">lgorton@lexingtonky.gov</a></dd>
             <dt></dt>
@@ -55,7 +55,7 @@
             <dt>Representative:</dt>
             <dd><a href="http://www.lexingtonky.gov/index.aspx?page=355">Chuck Ellinger</a></dd>
             <dt>Phone Number:</dt>
-            <dd>258-3212</dd>
+            <dd>(859) 258-3212</dd>
             <dt>Email:</dt>
             <dd><a href="mailto:cellinge@lexingtonky.gov">cellinge@lexingtonky.gov</a></dd>
             <dt></dt>
@@ -63,7 +63,7 @@
             <dt>Representative:</dt>
             <dd><a href="http://www.lexingtonky.gov/index.aspx?page=354">Steve Kay</a></dd>
             <dt>Phone Number:</dt>
-            <dd>258-3219</dd>
+            <dd>(859) 258-3219</dd>
             <dt>Email:</dt>
             <dd><a href="mailto:skay@lexingtonky.gov">skay@lexingtonky.gov</a></dd>
           </dl>
