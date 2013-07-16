@@ -14,7 +14,7 @@
             <dt>District</dt>
             <dd><%= @senate[:district] %></dd>
             <dt>Representative</dt>
-            <dd><%= @senate[:rep] %></dd>
+            <dd><%= @senate[:rep].split.map {|n| n.capitalize}.join(' ')  %></dd>
           </dl>
         </td>
       </tr>
@@ -25,7 +25,7 @@
             <dt>District</dt>
             <dd><%= @house[:district] %></dd>
             <dt>Representative</dt>
-            <dd><%= @house[:rep] %></dd>
+            <dd><%= @house[:rep].split.map {|n| n.capitalize}.join(' ') %></dd>
           </dl>
         </td>
       </tr>
@@ -76,7 +76,7 @@
             <dt>District:</dt>
             <dd><%= @magistrate[:district] %></dd>
             <dt>Representative:</dt>
-            <dd><%= @magistrate[:rep] %></dd>
+            <dd><%= @magistrate[:rep].split.map {|n| n.capitalize}.join(' ')  %></dd>
           </dl>
         </td>
       </tr>
@@ -91,7 +91,7 @@
             <dt>District:</dt>
             <dd><%= @school_board[:district] %></dd>
             <dt>Representative:</dt>
-            <dd><%= @school_board[:rep] %></dd>
+            <dd><%= @school_board[:rep].split.map {|n| n.capitalize}.join(' ')  %></dd>
           </dl>
         </td>
       </tr>
