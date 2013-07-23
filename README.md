@@ -8,7 +8,13 @@ See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 - postgresql -- `brew install postgres`
 - postgis -- `brew install postgis`
 
+## To get started:
+
+1. `bundle`
+2. `puma` to start the server at [localhost:9292](http://localhost:9292/).
+
 ## To update the database:
+
 1. Download the new shape file from [data.lexingtonky.gov](http://data.lexingtonky.gov) -- for example, under Community, [Board of Elections - Voting Precincts](https://opendatalex.s3.amazonaws.com/2013-03-21T200744/VotingPrecinct.zip).
 2. Run `shp2pgsql -c -D -s 4269 -I shapefile.shp tablename > filename.sql`
 3. In psql, drop the table you will be updating.
