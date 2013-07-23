@@ -1,29 +1,47 @@
-input#appendedInput {
-  height: inherit !important;
+a#github-ribbon {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
-.place-districts-wrapper {
-	position:relative;
-}
-.place-districts-image {
-	top:0px; right:20px;
-	position:absolute;
-	width:180px; 
-	height:190px;
-	background-image:url('../img/districts@1x.png'); 
-	background-repeat: no-repeat;
-    background-size: 180px 190px;
+a img {
+	border: none;
 }
 
-.footer {
-	margin-top:40px;
+footer {
+	margin-top: 40px;
+	font-size: 90%;
+	color: #999;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), 
-only screen and (min-device-pixel-ratio: 2) {
-    /* on retina, use image that's scaled by 2 */
-	.place-districts-image {
-	    background-image: url('../img/districts@1x.png');
-	    background-size: 180px 190px;
+h1 {
+	margin: 40px 0;
+}
+
+.pad-right {
+	padding-right: 40px;
+}
+
+@media (max-width: 860px) {
+	h1 {
+		margin-top: 70px;
+	}
+}
+
+@media (max-width: 500px) {
+	h1 {
+		margin-top: 100px;
+	}
+}
+
+@media (max-width: 480px) {
+	.pull-left {
+		float: none;
+	}
+
+	.form-inline .btn {
+		display: block;
+		margin: 10px 0;
 	}
 }

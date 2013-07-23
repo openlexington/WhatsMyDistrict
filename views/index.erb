@@ -1,34 +1,15 @@
-
-
-<div class="row">
-  <div class="span4" id="place-districts-wrapper" style="position:relative">
-    <div class="place-districts-image"></div>
-  </div>
-  <div class="span8">
-    <p class="lead">Look up your address to find what council, school, and
-      other districts you're in.
-    </p>
-  </div>
+<div class="pull-left pad-right text-center">
+  <img src="/img/districts@1x.png" width="180" height="190">
 </div>
-<div class="row">
-  <div class="span8 offset4">
-    <form method="get" action="/results" class="form-vertical">
-      <fieldset>
-        <div class="control-group">
-          <label class="control-label">Address</label>
-          <div class="controls">
-            <div class="input-append">
-              <input type="text" id="appendedInput" name="address" placeholder="560 E. Third St">
-              <span class="add-on">Lexington, KY</span>
-            </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-      </fieldset>
-    </form>
+<p class="lead">
+  Enter your address to find your council, school, and
+  other districts.
+</p>
+<form method="get" action="/results" class="form-inline">
+  <label for="address">Address:</label>
+  <div class="input-append">
+    <input type="text" id="address" name="address" placeholder="560 E. Third St">
+    <span class="add-on">Lexington, KY</span>
   </div>
-</div>
+  <input type="submit" class="btn btn-primary" value="Search">
+</form>

@@ -5,30 +5,25 @@
   <title>What's My District</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css">
   <link rel="stylesheet" href="css/application.css" type="text/css">
 </head>
 <body>
-  <a href="https://github.com/openlexington/WhatsMyDistrict"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-  <section class="container">
-    <div class="row">
-      <div class="span12">
-        <h1 class="text-center">What's My District</h1>
-      </div>
-    </div>
+  <a href="https://github.com/openlexington/WhatsMyDistrict" id="github-ribbon">
+    <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+  </a>
+  <div class="container">
+    <h1 class="text-center">What's My District</h1>
     <%= yield %>
-    <section class="footer">
-      <div class="row">
-        <div class="span12">
-          <p class="text-center">
-          	Made by
-          	<a href="http://openlexington.org" target="_blank">OpenLexington</a>
-          	for the
-          	<a href="http://hackforchange.org" target="_blank">National Day of Civic Hacking</a>
-            <br />
-            from Lexington's <a href="http://data.lexingtonky.gov">Open Data Catalog</a>.
-         	</p>
-        </div>
-    </section>
-  </section>
+    <footer>
+      <p class="text-center">
+      	Made by
+      	<a href="http://openlexington.org" target="_blank">OpenLexington</a>
+      	for the
+      	<a href="http://hackforchange.org" target="_blank">National Day of Civic Hacking</a>
+        from Lexington's <a href="http://data.lexingtonky.gov">Open Data Catalog</a>.
+     	</p>
+    </footer>
+  </div>
 </body>
 </html>
