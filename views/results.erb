@@ -7,41 +7,65 @@
 <div class="row">
   <div class="span8 offset2">
     <table class="table table-bordered table-striped">
-      <tr>
-        <td>State Senate District</td>
-        <td>
-          <dl class="dl-horizontal">
-            <dt>District</dt>
-            <dd><%= @senate[:district] %></dd>
-            <dt>Representative</dt>
-            <dd><%= @senate[:rep].split.map {|n| n.capitalize}.join(' ')  %></dd>
-          </dl>
-        </td>
-      </tr>
-      <tr>
-        <td>State House District</td>
-        <td>
-          <dl class="dl-horizontal">
-            <dt>District</dt>
-            <dd><%= @house[:district] %></dd>
-            <dt>Representative</dt>
-            <dd><%= @house[:rep].split.map {|n| n.capitalize}.join(' ') %></dd>
-          </dl>
-        </td>
-      </tr>
+      <% if @senate %>
+        <tr>
+          <td>State Senate District</td>
+          <td>
+            <dl class="dl-horizontal">
+              <dt>District</dt>
+              <dd><%= @senate[:district] %></dd>
+              <dt>Representative</dt>
+              <dd>
+                <% if @senate.has_key?(:rep) %>
+                  <%= @senate[:rep].split.map {|n| n.capitalize}.join(' ')  %>
+                <% end %>
+              </dd>
+            </dl>
+          </td>
+        </tr>
+      <% end %>
+      <% if @house %>
+        <tr>
+          <td>State House District</td>
+          <td>
+            <dl class="dl-horizontal">
+              <dt>District</dt>
+              <dd><%= @house[:district] %></dd>
+              <dt>Representative</dt>
+              <dd>
+                <% if @house.has_key?(:rep) %>
+                  <%= @house[:rep].split.map {|n| n.capitalize}.join(' ') %>
+                <% end %>
+              </dd>
+            </dl>
+          </td>
+        </tr>
+      <% end %>
       <tr>
         <td>Council District</td>
         <td>
-          <dl class="dl-horizontal">
-            <dt>District:</dt>
-            <dd><%= @council[:district] %></dd>
-            <dt>Representative:</dt>
-            <dd><a href="<%= @council[:url]%>"><%= @council[:rep].split.map {|n| n.capitalize}.join(' ') %></a></dd>
-            <dt>Phone Number:</dt>
-            <dd><%= @council[:telephone] %></dd>
-            <dt>Email:</dt>
-            <dd><a href="mailto: <%= @council[:email] %>"><%= @council[:email] %></a></dd>
-          </dl>
+          <% if @council %>
+            <dl class="dl-horizontal">
+              <dt>District:</dt>
+              <dd><%= @council[:district] %></dd>
+              <dt>Representative:</dt>
+              <dd>
+                <% if @council.has_key?(:rep) %>
+                  <a href="<%= @council[:url]%>">
+                    <%= @council[:rep].split.map {|n| n.capitalize}.join(' ') %>
+                  </a>
+                <% end %>
+              </dd>
+              <dt>Phone Number:</dt>
+              <dd><%= @council[:telephone] %></dd>
+              <dt>Email:</dt>
+              <dd>
+                <a href="mailto: <%= @council[:email] %>">
+                  <%= @council[:email] %>
+                </a>
+              </dd>
+            </dl>
+          <% end %>
           <p class="lead text-center">Council at-large</p>
           <dl class="dl-horizontal">
             <dt>Representative:</dt>
@@ -69,60 +93,80 @@
           </dl>
         </td>
       </tr>
-      <tr>
-        <td>Magistrate District</td>
-        <td>
-          <dl class="dl-horizontal">
-            <dt>District:</dt>
-            <dd><%= @magistrate[:district] %></dd>
-            <dt>Representative:</dt>
-            <dd><%= @magistrate[:rep].split.map {|n| n.capitalize}.join(' ')  %></dd>
-          </dl>
-        </td>
-      </tr>
-      <tr>
-        <td>Voting District</td>
-        <td><%= @voting[:name] %></td>
-      </tr>
-      <tr>
-        <td>School Board District</td>
-        <td>
-          <dl class="dl-horizontal">
-            <dt>District:</dt>
-            <dd><%= @school_board[:district] %></dd>
-            <dt>Representative:</dt>
-            <dd><%= @school_board[:rep].split.map {|n| n.capitalize}.join(' ')  %></dd>
-          </dl>
-        </td>
-      </tr>
-      <tr>
-        <td>Elementary School District</td>
-        <td>
-          <%= @elem_school[:name] %>
-        </td>
-      </tr>
-      <tr>
-        <td>Middle School District</td>
+      <% if @magistrate %>
+        <tr>
+          <td>Magistrate District</td>
+          <td>
+            <dl class="dl-horizontal">
+              <dt>District:</dt>
+              <dd><%= @magistrate[:district] %></dd>
+              <dt>Representative:</dt>
+              <dd>
+                <% if @magistrate.has_key?(:rep) %>
+                  <%= @magistrate[:rep].split.map {|n| n.capitalize}.join(' ')  %>
+                <% end %>
+              </dd>
+            </dl>
+          </td>
+        </tr>
+      <% end %>
+      <% if @voting %>
+        <tr>
+          <td>Voting District</td>
+          <td><%= @voting[:name] %></td>
+        </tr>
+      <% end %>
+      <% if @school_board %>
+        <tr>
+          <td>School Board District</td>
+          <td>
+            <dl class="dl-horizontal">
+              <dt>District:</dt>
+              <dd><%= @school_board[:district] %></dd>
+              <dt>Representative:</dt>
+              <dd>
+                <% if @school_board.has_key?(:rep) %>
+                  <%= @school_board[:rep].split.map {|n| n.capitalize}.join(' ')  %>
+                <% end %>
+              </dd>
+            </dl>
+          </td>
+        </tr>
+      <% end %>
+      <% if @elem_school %>
+        <tr>
+          <td>Elementary School District</td>
+          <td><%= @elem_school[:name] %></td>
+        </tr>
+      <% end %>
+      <% if @middle_school %>
+        <tr>
+          <td>Middle School District</td>
           <td><%= @middle_school[:sname] %></td>
-      </tr>
-      <tr>
-        <td>High School District</td>
+        </tr>
+      <% end %>
+      <% if @high_school %>
+        <tr>
+          <td>High School District</td>
           <td><%= @high_school[:sname] %></td>
-      </tr>
-      <tr>
-        <td>Neighborhood Association</td>
-        <td>
-          <% if @neighborhood.empty? || @neighborhood.first.empty? || @neighborhood.first[:assoc_name].empty?  %>
-            None
-          <% else %>
-            <ul>
-              <% @neighborhood.each do |assoc| %>
-              <li><%= assoc[:assoc_name] %></li>
-              <% end %>
-            </ul>
-          <% end %>
-        </td>
-      </tr>
+        </tr>
+      <% end %>
+      <% if @neighborhood %>
+        <tr>
+          <td>Neighborhood Association</td>
+          <td>
+            <% if @neighborhood.empty? || @neighborhood.first.empty? || @neighborhood.first[:assoc_name].empty?  %>
+              None
+            <% else %>
+              <ul>
+                <% @neighborhood.each do |assoc| %>
+                <li><%= assoc[:assoc_name] %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>

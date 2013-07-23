@@ -22,6 +22,7 @@ See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 
     See also [Postgres.app](http://postgresapp.com/).
 4. Create the database: `createdb -p 5432 -h localhost blake`
+5. Add necessary postgis functions to the database: `psql -p 5432 -h localhost -d blake -f /usr/local/share/postgis/postgis.sql` and `psql -p 5432 -h localhost -d blake -f /usr/local/share/postgis/spatial_ref_sys.sql` -- thanks to [PostGres - PostGIS on OS X Lion](http://lukeberndt.com/2011/postgres-postgis-on-osx-lion/).
 
 ## To update the database:
 
