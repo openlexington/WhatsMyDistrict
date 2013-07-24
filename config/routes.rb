@@ -24,26 +24,27 @@ class DistrictApp < Sinatra::Base
 
   get '/results' do
     @address = params[:address].strip
-    geocode_results = Geocoder.search(@address + " Lexington KY")
-    @lat = geocode_results.first.geometry['location']['lat']
-    @lng = geocode_results.first.geometry['location']['lng']
-    @council = get_council(@lat, @lng)
-    @magistrate = get_magistrate(@lat, @lng)
-    @school_board = get_school_board(@lat, @lng)
-    @elem_school = get_elementary_school(@lat, @lng)
-    @middle_school = get_middle_school(@lat, @lng)
-    @high_school = get_high_school(@lat, @lng)
-    @senate = get_senate(@lat, @lng)
-    @house = get_house(@lat, @lng)
-    @voting = get_voting(@lat, @lng)
-    @neighborhood = get_neighborhood(@lat, @lng)
-    if @neighborhood.nil? || @neighborhood.empty?
-      @neighborhood = [{assoc_name: ''}]
-    end
+    lat, lng = get_geocode(@address + " Lexington KY")
+    @council = get_council(lat, lng)
+    @magistrate = get_magistrate(lat, lng)
+    @school_board = get_school_board(lat, lng)
+    @elem_school = get_elementary_school(lat, lng)
+    @middle_school = get_middle_school(lat, lng)
+    @high_school = get_high_school(lat, lng)
+    @senate = get_senate(lat, lng)
+    @house = get_house(lat, lng)
+    @voting = get_voting(lat, lng)
+    @neighborhood = get_neighborhood(lat, lng)
     haml :results
   end
 
   private
+
+  def get_geocode address
+    geocode_results = Geocoder.search(address)
+    location = geocode_results.first.geometry['location']
+    [location['lat'], location['lng']]
+  end
 
   def get_council lat, lng
     get_first_result("SELECT district,rep,url,telephone,email from council where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
@@ -82,11 +83,12 @@ class DistrictApp < Sinatra::Base
   end
 
   def get_neighborhood lat, lng
-    get_first_result("SELECT assoc_name from neighborhood_assoc where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+    neighborhood = get_first_result("SELECT assoc_name from neighborhood_assoc where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+    neighborhood.empty? ? [{assoc_name: ''}] : neighborhood
   end
 
   def get_first_result query
-    DB[query].first
+    DB[query].first || {}
   rescue Sequel::DatabaseError
     {}
   end
