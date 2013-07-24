@@ -1,0 +1,6 @@
+%form.form-inline{action: "/results", method: "GET"}
+  %label{for: "address"} Address:
+  .input-append
+    %input#address{name: "address", placeholder: "560 E. Third St", type: "text", value: params[:address]}
+    %span.add-on Lexington, KY
+  %input.btn.btn-primary{type: "submit", value: "Search"}

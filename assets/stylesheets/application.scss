@@ -30,6 +30,15 @@ section + section {
   margin-top: 20px;
 }
 
+.span4 {
+  .form-inline {
+    .btn {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+}
+
 @media (max-width: 860px) {
   h1 {
     margin-top: 70px;

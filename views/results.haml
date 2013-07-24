@@ -1,7 +1,6 @@
 .row-fluid
   .span4.offset4
-    %p.lead
-      Districts for &ldquo;#{@address}&rdquo;:
+    = haml :search_form
     - if @senate
       %section
         %h3 State Senate District
