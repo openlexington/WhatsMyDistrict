@@ -23,7 +23,8 @@ class DistrictApp < Sinatra::Base
     @senate = get_senate(@lat, @lng)
     @house = get_house(@lat, @lng)
     @voting = get_voting(@lat, @lng)
-    if (@neighborhood=get_neighborhood(@lat, @lng)).empty?
+    @neighborhood = get_neighborhood(@lat, @lng)
+    if @neighborhood.nil? || @neighborhood.empty?
       @neighborhood = [{assoc_name: ''}]
     end
 
