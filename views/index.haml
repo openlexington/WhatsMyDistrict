@@ -1,0 +1,11 @@
+.pull-left.pad-right.text-center
+  %img{height: "190", src: "/img/districts@1x.png", width: "180"}
+%p.lead
+  Enter your address to find your council, school, and
+  other districts.
+%form.form-inline{action: "/results", method: "GET"}
+  %label{for: "address"} Address:
+  .input-append
+    %input#address{name: "address", placeholder: "560 E. Third St", type: "text"}
+    %span.add-on Lexington, KY
+  %input.btn.btn-primary{type: "submit", value: "Search"}

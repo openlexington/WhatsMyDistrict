@@ -1,0 +1,124 @@
+.row-fluid
+  .span4.offset4
+    %p.lead
+      Here are your districts for
+      %span.nowrap
+        &ldquo;#{@address}&rdquo;:
+    - if @senate
+      %section
+        %h3 State Senate District
+        %dl.dl-horizontal
+          %dt District
+          %dd= @senate[:district]
+          %dt Representative
+          %dd
+            - if @senate.has_key?(:rep)
+              = @senate[:rep].split.map {|n| n.capitalize}.join(' ')
+    - if @house
+      %section
+        %h3 State House District
+        %dl.dl-horizontal
+          %dt District
+          %dd= @house[:district]
+          %dt Representative
+          %dd
+            - if @house.has_key?(:rep)
+              = @house[:rep].split.map {|n| n.capitalize}.join(' ')
+    %section
+      %h3 Council District
+      - if @council
+        %dl.dl-horizontal
+          %dt District:
+          %dd= @council[:district]
+          %dt Representative:
+          %dd
+            - if @council.has_key?(:rep)
+              %a{href: @council[:url]}
+                = @council[:rep].split.map {|n| n.capitalize}.join(' ')
+          %dt Phone Number:
+          %dd= @council[:telephone]
+          %dt Email:
+          %dd
+            %a{href: "mailto: #{@council[:email]}"}
+              = @council[:email]
+      %h4 Council at-large
+      %dl.dl-horizontal
+        %dt Representative:
+        %dd
+          %a{href: "http://www.lexingtonky.gov/index.aspx?page=353"}
+            Linda Gorton, Vice Mayor
+        %dt Phone Number:
+        %dd (859) 258-3211
+        %dt Email:
+        %dd
+          %a{href: "mailto:lgorton@lexingtonky.gov"}
+            lgorton@lexingtonky.gov
+        %dt
+        %dd  
+        %dt Representative:
+        %dd
+          %a{href: "http://www.lexingtonky.gov/index.aspx?page=355"}
+            Chuck Ellinger
+        %dt Phone Number:
+        %dd (859) 258-3212
+        %dt Email:
+        %dd
+          %a{href: "mailto:cellinge@lexingtonky.gov"}
+            cellinge@lexingtonky.gov
+        %dt
+        %dd  
+        %dt Representative:
+        %dd
+          %a{href: "http://www.lexingtonky.gov/index.aspx?page=354"}
+            Steve Kay
+        %dt Phone Number:
+        %dd (859) 258-3219
+        %dt Email:
+        %dd
+          %a{href: "mailto:skay@lexingtonky.gov"}
+            skay@lexingtonky.gov
+    - if @magistrate
+      %section
+        %h3 Magistrate District
+        %dl.dl-horizontal
+          %dt District:
+          %dd= @magistrate[:district]
+          %dt Representative:
+          %dd
+            - if @magistrate.has_key?(:rep)
+              = @magistrate[:rep].split.map {|n| n.capitalize}.join(' ')
+    - if @voting
+      %section
+        %h3 Voting District
+        %p= @voting[:name]
+    - if @school_board
+      %section
+        %h3 School Board District
+        %dl.dl-horizontal
+          %dt District:
+          %dd= @school_board[:district]
+          %dt Representative:
+          %dd
+            - if @school_board.has_key?(:rep)
+              = @school_board[:rep].split.map {|n| n.capitalize}.join(' ')
+    - if @elem_school
+      %section
+        %h3 Elementary School District
+        %p= @elem_school[:name]
+    - if @middle_school
+      %section
+        %h3 Middle School District
+        %p= @middle_school[:sname]
+    - if @high_school
+      %section
+        %h3 High School District
+        %p= @high_school[:sname]
+    - if @neighborhood
+      %section
+        %h3 Neighborhood Association
+        - if @neighborhood.empty? || (first_neighborhood=@neighborhood.first).empty? || first_neighborhood[:assoc_name].empty?
+          %p none
+        - else
+          %ul
+            - @neighborhood.each do |assoc|
+              %li= assoc[:assoc_name]

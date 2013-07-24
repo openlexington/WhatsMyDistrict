@@ -4,6 +4,8 @@ GEM
     daemons (1.1.9)
     eventmachine (1.0.3)
     geocoder (1.1.8)
+    haml (4.0.3)
+      tilt
     pg (0.15.1)
     puma (2.0.1)
       rack (>= 1.1, < 2.0)
@@ -27,6 +29,7 @@ PLATFORMS
 
 DEPENDENCIES
   geocoder (~> 1.1.8)
+  haml
   pg (~> 0.15.1)
   puma (~> 2.0.1)
   rake (~> 10.0.4)

@@ -5,15 +5,14 @@ class DistrictApp < Sinatra::Base
   DB = Sequel.postgres('blake', user: 'blake', host: 'localhost')
 
   get '/' do
-    erb :index
+    haml :index
   end
 
   get '/results' do
-    @address = params[:address]
+    @address = params[:address].strip
     geocode_results = Geocoder.search(@address + " Lexington KY")
     @lat = geocode_results.first.geometry['location']['lat']
     @lng = geocode_results.first.geometry['location']['lng']
-
     @council = get_council(@lat, @lng)
     @magistrate = get_magistrate(@lat, @lng)
     @school_board = get_school_board(@lat, @lng)
@@ -27,8 +26,7 @@ class DistrictApp < Sinatra::Base
     if @neighborhood.nil? || @neighborhood.empty?
       @neighborhood = [{assoc_name: ''}]
     end
-
-    erb :results
+    haml :results
   end
 
   private
