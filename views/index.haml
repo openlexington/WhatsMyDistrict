@@ -1,6 +1,8 @@
-.pull-left.pad-right.text-center
-  %img{height: "190", src: "/img/districts@1x.png", width: "180"}
-%p.lead
-  Enter your address to find your council, school, and
-  other districts.
-= haml :search_form
+.row-fluid
+  .span2.text-center.offset2
+    %img{height: "190", src: "/img/districts@1x.png", width: "180"}
+  .span6
+    %p.lead
+      Enter your address to find your council, school, and
+      other districts.
+    = haml :search_form

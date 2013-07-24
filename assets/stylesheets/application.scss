@@ -39,6 +39,13 @@ section + section {
   }
 }
 
+@media (max-width: 979px) {
+  .form-inline .btn {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
 @media (max-width: 860px) {
   h1 {
     margin-top: 70px;
@@ -48,16 +55,5 @@ section + section {
 @media (max-width: 500px) {
   h1 {
     margin-top: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .pull-left {
-    float: none;
-  }
-
-  .form-inline .btn {
-    display: block;
-    margin: 10px 0;
   }
 }
