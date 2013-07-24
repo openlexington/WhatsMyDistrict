@@ -9,27 +9,72 @@ class DistrictApp < Sinatra::Base
   end
 
   get '/results' do
-    geocode_results = Geocoder.search(params[:address] + " Lexington KY")
+    @address = params[:address]
+    geocode_results = Geocoder.search(@address + " Lexington KY")
     @lat = geocode_results.first.geometry['location']['lat']
     @lng = geocode_results.first.geometry['location']['lng']
 
-    @council = DB["SELECT district,rep,url,telephone,email from council where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @magistrate = DB["SELECT district,rep from magistrate where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @school_board = DB["SELECT district,rep from school_board where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @elem_school = DB["SELECT name from elementary where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @middle_school = DB["SELECT sname from middle where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @high_school = DB["SELECT sname from high where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @senate = DB["SELECT district,rep from senate where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @house = DB["SELECT district,rep from house where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    @voting = DB["SELECT name from voting where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"].first
-    neighborhood_results = DB["SELECT assoc_name from neighborhood_assoc where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{@lng.to_s} #{@lat.to_s})'),4269),geom);"]
-    unless neighborhood_results.empty?
-      @neighborhood = neighborhood_results
-    else
-      @neighborhood = [{assoc_name: ""}]
+    @council = get_council(@lat, @lng)
+    @magistrate = get_magistrate(@lat, @lng)
+    @school_board = get_school_board(@lat, @lng)
+    @elem_school = get_elementary_school(@lat, @lng)
+    @middle_school = get_middle_school(@lat, @lng)
+    @high_school = get_high_school(@lat, @lng)
+    @senate = get_senate(@lat, @lng)
+    @house = get_house(@lat, @lng)
+    @voting = get_voting(@lat, @lng)
+    if (@neighborhood=get_neighborhood(@lat, @lng)).empty?
+      @neighborhood = [{assoc_name: ''}]
     end
 
     erb :results
   end
 
+  private
+
+  def get_council lat, lng
+    get_first_result("SELECT district,rep,url,telephone,email from council where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_magistrate lat, lng
+    get_first_result("SELECT district,rep from magistrate where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_school_board lat, lng
+    get_first_result("SELECT district,rep from school_board where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_elementary_school lat, lng
+    get_first_result("SELECT name from elementary where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_middle_school lat, lng
+    get_first_result("SELECT sname from middle where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_high_school lat, lng
+    get_first_result("SELECT sname from high where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_senate lat, lng
+    get_first_result("SELECT district,rep from senate where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_house lat, lng
+    get_first_result("SELECT district,rep from house where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_voting lat, lng
+    get_first_result("SELECT name from voting where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_neighborhood lat, lng
+    get_first_result("SELECT assoc_name from neighborhood_assoc where ST_Within(ST_SetSRID(ST_GeomFromText('POINT(#{lng.to_s} #{lat.to_s})'),4269),geom);")
+  end
+
+  def get_first_result query
+    DB[query].first
+  rescue Sequel::DatabaseError
+    {}
+  end
 end
