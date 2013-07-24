@@ -8,3 +8,5 @@ gem 'pg', "~> 0.15.1"
 gem 'geocoder', "~> 1.1.8"
 gem 'rake', "~> 10.0.4"
 gem 'haml'
+gem 'sinatra-twitter-bootstrap'
+gem 'compass-rails', '~> 1.0.3'

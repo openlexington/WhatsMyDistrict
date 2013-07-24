@@ -1,6 +1,20 @@
+require 'sinatra/twitter-bootstrap'
+require 'sass'
+
+class SassEngine < Sinatra::Base
+  set :views, File.dirname(__FILE__) + '/../assets/stylesheets'
+
+  get '/scss/*.css' do
+    filename = params[:splat].first
+    scss filename.to_sym
+  end
+end
+
 class DistrictApp < Sinatra::Base
   require 'geocoder'
   require 'sequel'
+  use SassEngine
+  register Sinatra::Twitter::Bootstrap::Assets
 
   DB = Sequel.postgres('blake', user: 'blake', host: 'localhost')
 
