@@ -95,7 +95,7 @@
     - if @neighborhoods
       %section
         %h3 Neighborhood Association
-        - if @neighborhoods.empty? #|| @neighborhoods.first.assoc_name.blank?
+        - if @neighborhoods.empty? || (assoc=@neighborhoods.first).assoc_name.nil? || assoc.assoc_name.blank?
           %p none
         - else
           %ul
