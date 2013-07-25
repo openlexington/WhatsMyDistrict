@@ -25,6 +25,10 @@ h1 {
   margin: 40px 0;
 }
 
+.dl-horizontal dt:after {
+  content: ":";
+}
+
 .pad-right {
   padding-right: 40px;
 }
@@ -48,11 +52,40 @@ section + section {
     display: block;
     margin: 10px 0;
   }
+
+  .row-fluid .span4 {
+    width: 48.61878453038674%;
+    margin-left: 2.7624309392265194%;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.offset4 {
+      margin-left: auto;
+      margin-right: auto;
+      float: none;
+      display: block;
+      width: 24em;
+    }
+  }
+
+  .row-fluid .span4 + .span4 + .span4 {
+    margin-left: 0;
+    clear: left;
+  }
 }
 
 @media (max-width: 860px) {
   h1 {
     margin-top: 70px;
+  }
+}
+
+@media (max-width: 767px) {
+  .row-fluid .span4 {
+    margin-left: 0;
+    width: 100%;
   }
 }
 

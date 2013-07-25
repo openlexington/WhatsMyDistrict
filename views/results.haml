@@ -5,7 +5,7 @@
   .span4
     - if @senate
       %section
-        %h3 State Senate District
+        %h3 State Senate
         %dl.dl-horizontal
           %dt District
           %dd= @senate.district
@@ -13,7 +13,7 @@
           %dd= word_splitter @senate.rep
     - if @house
       %section
-        %h3 State House District
+        %h3 State House
         %dl.dl-horizontal
           %dt District
           %dd= @house.district
@@ -21,18 +21,19 @@
           %dd= word_splitter @house.rep
     - if @magistrate
       %section
-        %h3 Magistrate District
+        %h3 Magistrate
         %dl.dl-horizontal
-          %dt District:
+          %dt District
           %dd= @magistrate.district
-          %dt Representative:
+          %dt Representative
           %dd= word_splitter @magistrate.rep
   .span4
     %section
-      %h3
-        Council District
-        = @council.district if @council
+      %h3 Council
       - if @council
+        %p
+          %strong District:
+          = @council.district
         %p
           %a.name{href: @council.url}
             = word_splitter @council.rep
@@ -68,21 +69,20 @@
           skay@lexingtonky.gov
     - if @voting
       %section
-        %h3 Voting District
-        %p= @voting.name
+        %h3 Voting
+        %p
+          %strong District:
+          = @voting.name
   .span4
     %section
-      %h3 School Districts
+      %h3 Schools
       %dl.dl-horizontal
+        %dt School Board District
+        - if @school_board
+          %dd= @school_board.district
         %dt Representative
         - if @school_board
           %dd= word_splitter @school_board.rep
-        %dt
-          School Board
-        - if @school_board
-          %dd
-            district
-            = @school_board.district
         %dt Elementary School
         - if @elem_school
           %dd= @elem_school.name
