@@ -27,10 +27,6 @@
           %dd= @magistrate.district
           %dt Representative:
           %dd= word_splitter @magistrate.rep
-    - if @voting
-      %section
-        %h3 Voting District
-        %p= @voting.name
   .span4
     %section
       %h3
@@ -70,6 +66,32 @@
         &middot;
         %a{href: "mailto:skay@lexingtonky.gov"}
           skay@lexingtonky.gov
+    - if @voting
+      %section
+        %h3 Voting District
+        %p= @voting.name
+  .span4
+    %section
+      %h3 School Districts
+      %dl.dl-horizontal
+        %dt Representative
+        - if @school_board
+          %dd= word_splitter @school_board.rep
+        %dt
+          School Board
+        - if @school_board
+          %dd
+            district
+            = @school_board.district
+        %dt Elementary School
+        - if @elem_school
+          %dd= @elem_school.name
+        %dt Middle School
+        - if @middle_school
+          %dd= @middle_school.sname
+        %dt High School
+        - if @high_school
+          %dd= @high_school.sname
     - if @neighborhoods
       %section
         %h3 Neighborhood Association
@@ -79,24 +101,3 @@
           %ul
             - @neighborhoods.each do |assoc|
               %li= assoc.assoc_name
-  .span4
-    - if @school_board
-      %section
-        %h3 School Board District
-        %dl.dl-horizontal
-          %dt District:
-          %dd= @school_board.district
-          %dt Representative:
-          %dd= word_splitter @school_board.rep
-    - if @elem_school
-      %section
-        %h3 Elementary School District
-        %p= @elem_school.name
-    - if @middle_school
-      %section
-        %h3 Middle School District
-        %p= @middle_school.sname
-    - if @high_school
-      %section
-        %h3 High School District
-        %p= @high_school.sname
