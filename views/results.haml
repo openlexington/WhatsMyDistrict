@@ -33,47 +33,43 @@
         %p= @voting.name
   .span4
     %section
-      %h3 Council District
+      %h3
+        Council District
+        = @council.district if @council
       - if @council
-        %dl.dl-horizontal
-          %dt District:
-          %dd= @council.district
-          %dt Representative:
-          %dd
-            %a{href: @council.url}
-              = word_splitter @council.rep
-          %dt Phone Number:
-          %dd= @council.telephone
-          %dt Email:
-          %dd
-            %a{href: "mailto: #{@council.email}"}
-              = @council.email
+        %p
+          %a.name{href: @council.url}
+            = word_splitter @council.rep
+          %br
+          = @council.telephone
+          &middot;
+          %a{href: "mailto:#{@council.email}"}
+            = @council.email
       %h4 Council at-large
-      %ul
-        %li
-          %a{href: "http://www.lexingtonky.gov/index.aspx?page=353"}
-            Linda Gorton, Vice Mayor
-          %br
-          (859) 258-3211
-          &middot;
-          %a{href: "mailto:lgorton@lexingtonky.gov"}
-            lgorton@lexingtonky.gov
-        %li
-          %a{href: "http://www.lexingtonky.gov/index.aspx?page=355"}
-            Chuck Ellinger
-          %br
-          (859) 258-3212
-          &middot;
-          %a{href: "mailto:cellinge@lexingtonky.gov"}
-            cellinge@lexingtonky.gov
-        %li
-          %a{href: "http://www.lexingtonky.gov/index.aspx?page=354"}
-            Steve Kay
-          %br
-          (859) 258-3219
-          &middot;
-          %a{href: "mailto:skay@lexingtonky.gov"}
-            skay@lexingtonky.gov
+      %p
+        %a.name{href: "http://www.lexingtonky.gov/index.aspx?page=353"}
+          Linda Gorton, Vice Mayor
+        %br
+        (859) 258-3211
+        &middot;
+        %a{href: "mailto:lgorton@lexingtonky.gov"}
+          lgorton@lexingtonky.gov
+      %p
+        %a.name{href: "http://www.lexingtonky.gov/index.aspx?page=355"}
+          Chuck Ellinger
+        %br
+        (859) 258-3212
+        &middot;
+        %a{href: "mailto:cellinge@lexingtonky.gov"}
+          cellinge@lexingtonky.gov
+      %p
+        %a.name{href: "http://www.lexingtonky.gov/index.aspx?page=354"}
+          Steve Kay
+        %br
+        (859) 258-3219
+        &middot;
+        %a{href: "mailto:skay@lexingtonky.gov"}
+          skay@lexingtonky.gov
     - if @neighborhoods
       %section
         %h3 Neighborhood Association
