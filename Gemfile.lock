@@ -8,18 +8,18 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    daemons (1.1.9)
-    eventmachine (1.0.3)
     fssm (0.2.10)
     geocoder (1.1.8)
     haml (4.0.3)
       tilt
+    kgio (2.8.0)
     pg (0.15.1)
     puma (2.0.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
+    raindrops (0.11.0)
     rake (10.0.4)
     sass (3.2.9)
     sequel (3.48.0)
@@ -28,11 +28,11 @@ GEM
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
     sinatra-twitter-bootstrap (2.3.1.1)
-    thin (1.5.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     tilt (1.4.1)
+    unicorn (4.6.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -47,4 +47,4 @@ DEPENDENCIES
   sequel (~> 3.48.0)
   sinatra
   sinatra-twitter-bootstrap
-  thin
+  unicorn (~> 4.6.2)
