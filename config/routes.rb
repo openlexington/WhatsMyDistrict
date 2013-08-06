@@ -1,5 +1,6 @@
 require 'sinatra/twitter-bootstrap'
 require 'sass'
+require 'airbrake'
 
 class SassEngine < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/../assets/stylesheets'
@@ -15,6 +16,14 @@ class DistrictApp < Sinatra::Base
   require 'sequel'
   use SassEngine
   register Sinatra::Twitter::Bootstrap::Assets
+
+  configure :production do
+    Airbrake.configure do |config|
+      config.api_key = "16c86611790122f558f3467f09bdcc4f"
+    end
+    use Airbrake::Rack
+    enable :raise_errors
+  end
 
   get '/' do
     haml :index

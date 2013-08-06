@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'bundler/setup'
 require 'routes'
 require 'app_config'
+require 'airbrake'
 
 Dir.glob(File.join("models/**")) {|f| require "./#{f}"}
 
