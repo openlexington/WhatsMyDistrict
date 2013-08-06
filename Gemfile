@@ -10,3 +10,4 @@ gem 'haml'
 gem 'sinatra-twitter-bootstrap'
 gem 'compass-rails', '~> 1.0.3'
 gem 'unicorn', "~> 4.6.2"
+gem "airbrake", "~> 3.1.12"
