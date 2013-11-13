@@ -1,0 +1,3 @@
+HANDLE WITH CARE
+
+This is a psql db dump of the production whats-my-district table with from the postgres user. Record ownership is for the user postgres. This maybe helpful later: http://stackoverflow.com/a/6842496/281699
