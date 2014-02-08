@@ -6,7 +6,7 @@ function getLocation(){
     navigator.geolocation.getCurrentPosition(showPosition);
     }
   else{
-    // Fail quitely
+    // Fail quietly
   }
 };
 function showPosition(position)
@@ -21,7 +21,7 @@ function showPosition(position)
           address_field.value = results[0].formatted_address.split(',')[0];
         }
       } else {
-        // Geocode Failed, fail quitely
+        // Geocode Failed, fail quietly
       }
     });
 };
