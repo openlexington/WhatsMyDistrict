@@ -56,24 +56,28 @@ class DistrictApp < Sinatra::Base
 
   # return an array of the address split by spaces?
   def split_address(address)
-    ary = address.split(' ')
-    street_types = {lane:"LN",
-    street:"ST",
-    drive:"DR",
-    road:"RD",
-    highway:"HWY",
-    cove:"CV",
-    avenue:"AVE",
-    circle:"CIR",
-    court:"CT",
-    trail:"TRL",
-    way:"WAY",
-    boulevard:"BLVD",
-    alley:"ALY"}
+    ary = address.split(/\s+/)
+    street_types = {
+                    lane:"LN",
+                    street:"ST",
+                    drive:"DR",
+                    road:"RD",
+                    highway:"HWY",
+                    cove:"CV",
+                    avenue:"AVE",
+                    circle:"CIR",
+                    court:"CT",
+                    trail:"TRL",
+                    way:"WAY",
+                    boulevard:"BLVD",
+                    alley:"ALY"
+                   }
     number = ary.shift
-    street_type = ary.pop
+    street_type = ary.pop.downcase.to_sym
     street_name = ary.join(' ')
-    street_type = street_types[street_type.downcase.to_sym]
-    [number, street_name.upcase, street_type.upcase]
+    if street_types.key?(street_type)
+      street_type = street_types[street_type]
+    end
+    [number, street_name.upcase, street_type.to_s.upcase]
   end
 end
