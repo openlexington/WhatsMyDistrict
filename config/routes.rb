@@ -14,6 +14,7 @@ end
 class DistrictApp < Sinatra::Base
   require 'geocoder'
   require 'sequel'
+  require 'street_types.rb'
   use SassEngine
   register Sinatra::Twitter::Bootstrap::Assets
 
@@ -32,6 +33,7 @@ class DistrictApp < Sinatra::Base
   get '/results' do
     @address = params[:address].strip
     geocode = get_geocode(@address + " Lexington KY")
+    @address_split = split_address(@address)
     @council = CouncilDistrict.first_for_geocode(geocode)
     @magistrate = MagistrateDistrict.first_for_geocode(geocode)
     @school_board = SchoolBoardDistrict.first_for_geocode(geocode)
@@ -51,5 +53,17 @@ class DistrictApp < Sinatra::Base
     geocode_results = Geocoder.search(address)
     location = geocode_results.first.geometry['location']
     Geocode.new(location['lat'], location['lng'])
+  end
+
+  # return an array of the address split by spaces?
+  def split_address(address)
+    ary = address.split(/\s+/)
+    number = ary.shift
+    street_type = ary.pop.downcase.to_sym
+    street_name = ary.join(' ')
+    if StreetTypes::STREET_TYPES.key?(street_type)
+      street_type = StreetTypes::STREET_TYPES[street_type]
+    end
+    [number, street_name.upcase, street_type.to_s.upcase]
   end
 end
