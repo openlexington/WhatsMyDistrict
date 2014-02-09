@@ -70,7 +70,8 @@ class DistrictApp < Sinatra::Base
                     trail:"TRL",
                     way:"WAY",
                     boulevard:"BLVD",
-                    alley:"ALY"
+                    alley:"ALY",
+                    green:"GRN"
                    }
     number = ary.shift
     street_type = ary.pop.downcase.to_sym
