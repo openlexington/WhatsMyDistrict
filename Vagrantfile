@@ -26,6 +26,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     district.omnibus.chef_version = :latest
     district.vm.provision :chef_solo do |chef|
       chef.add_recipe 'annoyances'
+      chef.add_recipe 'build-essential'
+      chef.add_recipe 'vim'
+      chef.add_recipe 'git'
+      chef.add_recipe 'tmux'
       chef.add_recipe 'imagemagick'
       chef.add_recipe 'postgresql'
       chef.add_recipe 'postgis::default'
