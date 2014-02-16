@@ -1,0 +1,69 @@
+{
+  "sources": {
+    "annoyances": {
+      "locked_version": "1.0.0"
+    },
+    "database": {
+      "locked_version": "1.6.0"
+    },
+    "rvm": {
+      "locked_version": "0.9.1",
+      "git": "git://github.com/fnichol/chef-rvm.git",
+      "ref": "26ad5c043c70ea98855a049fbbacb7ffc5ad73e3"
+    },
+    "nginx": {
+      "locked_version": "0.101.6"
+    },
+    "postgresql": {
+      "locked_version": "3.3.4"
+    },
+    "postgis": {
+      "locked_version": "0.2.4"
+    },
+    "imagemagick": {
+      "locked_version": "0.2.2"
+    },
+    "mysql": {
+      "locked_version": "4.0.20"
+    },
+    "openssl": {
+      "locked_version": "1.1.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "aws": {
+      "locked_version": "1.0.0"
+    },
+    "xfs": {
+      "locked_version": "1.1.0"
+    },
+    "java": {
+      "locked_version": "1.19.2"
+    },
+    "chef_gem": {
+      "locked_version": "0.1.0"
+    },
+    "runit": {
+      "locked_version": "1.5.8"
+    },
+    "yum": {
+      "locked_version": "3.1.0"
+    },
+    "yum-epel": {
+      "locked_version": "0.3.2"
+    },
+    "bluepill": {
+      "locked_version": "2.3.1"
+    },
+    "rsyslog": {
+      "locked_version": "1.10.2"
+    },
+    "ohai": {
+      "locked_version": "1.0.2"
+    },
+    "apt": {
+      "locked_version": "2.3.8"
+    }
+  }
+}
