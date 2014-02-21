@@ -34,6 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe 'postgresql'
       chef.add_recipe 'postgis::default'
       chef.add_recipe 'rvm::system'
+      chef.add_recipe 'rvm::vagrant'
       chef.json = {
                     postgresql: {version: '9.1',
                                  password: {postgres: 'sorandomwow'},
