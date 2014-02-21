@@ -19,8 +19,12 @@ See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 5. `vagrant up`
 6. `vagrant ssh`
 7. `cd WhatsMyDistrict`
-8. `bundle install`
-9. ???
+8. `sudo bundle install`
+9. `psql -U postgres`
+10. `create database districts;`
+11. `\q`
+12. `psql -U postgres -d districts < sql/wmd.sql`
+13. `bundle exec puma -p 4567`
 
 ### MacOS X
 

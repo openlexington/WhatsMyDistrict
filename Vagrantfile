@@ -34,19 +34,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.add_recipe 'postgresql'
       chef.add_recipe 'postgis::default'
       chef.add_recipe 'rvm::system'
-      chef.add_recipe 'rvm::vagrant'
       chef.json = {
                     postgresql: {version: '9.1',
                                  password: {postgres: 'sorandomwow'},
                                  pg_hba: [{type: 'local', db: 'all',
                                    user: 'postgres', addr: nil,
-                                   method: 'trust'},
-                                  {type: 'local', db: 'all',
-                                   user: 'blake', addr: nil,
                                    method: 'trust'}]
                                 },
                     postgis: {template_name: 'blake'},
-                    rvm: {rubies: ['1.9.3'], default_ruby: '1.9.3',
+                    rvm: {rubies: ['1.9.3'], default_ruby: 'ruby-1.9.3-p484',
                           code: 'rvm use 1.9.3',
                           global_gems: [{name: 'rake'}, {name: 'bundler'}]}
                   }

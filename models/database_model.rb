@@ -1,5 +1,5 @@
 class DatabaseModel
-  DB = Sequel.postgres('blake', user: 'blake', host: 'localhost')
+  DB = Sequel.postgres('districts', user: 'postgres', host: 'localhost')
 
   def initialize attributes
     attributes.each {|k,v| self.send("#{k}=", v) }
