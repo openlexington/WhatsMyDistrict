@@ -6,4 +6,4 @@ log/unicorn.stderr.log
 log/unicorn.stdout.log
 puma.rb
 tmp/pids/unicorn.pid
-
+.vagrant
