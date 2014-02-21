@@ -10,6 +10,20 @@ See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 
 ## To get started:
 
+### Vagrant
+
+1. [Download](https://www.virtualbox.org/wiki/Downloads) & Install Virtualbox
+2. [Download](http://www.vagrantup.com/) & Install Vagrant
+3. `bundle`
+4. `bundle exec berks`
+5. `vagrant up`
+6. `vagrant ssh`
+7. `cd WhatsMyDistrict`
+8. `bundle install`
+9. ???
+
+### MacOS X
+
 1. `bundle`
 2. `puma` to start the server at [localhost:9292](http://localhost:9292/).
 3. For a new postgresql install in OS X:
