@@ -39,6 +39,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                                  password: {postgres: 'sorandomwow'},
                                  pg_hba: [{type: 'host', db: 'all',
                                    user: 'postgres', addr: '127.0.0.1/32',
+                                   method: 'trust'},
+                                   {type: 'local', db: 'all',
+                                   user: 'postgres', addr: nil,
                                    method: 'trust'}]
                                 },
                     postgis: {template_name: 'blake'},
