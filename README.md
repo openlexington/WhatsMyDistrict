@@ -14,6 +14,8 @@ See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 
 1. [Download](https://www.virtualbox.org/wiki/Downloads) & Install Virtualbox
 2. [Download](http://www.vagrantup.com/) & Install Vagrant
+2a. `vagrant plugin install vagrant-berkshelf`
+2b. `vagrant plugin install vagrant-omnibus`
 3. `bundle`
 4. `bundle exec berks`
 5. `vagrant up`
