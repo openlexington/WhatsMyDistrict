@@ -27,8 +27,8 @@ containing this project.
 10. `create database districts;`
 11. `\q`
 12. `psql -U postgres -d districts < sql/wmd.sql`
-13. `bundle exec puma -p 4567`
-14. Open browser to localhost:4567
+13. `foreman start`
+14. Open browser to [http://localhost:4567](http://localhost:4567)
 15. Hack
 
 ### MacOS X
