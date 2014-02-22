@@ -31,6 +31,7 @@ class DistrictApp < Sinatra::Base
   end
 
   get '/results' do
+    redirect to('/') if params[:address].blank?
     @address = params[:address].strip
     geocode = get_geocode(@address + " Lexington KY")
     @address_split = split_address(@address)
