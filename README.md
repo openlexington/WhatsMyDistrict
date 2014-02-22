@@ -22,7 +22,7 @@ containing this project.
 5. `vagrant up`
 6. `vagrant ssh`
 7. `cd WhatsMyDistrict`
-8. `sudo bundle install`
+8. `sudo bundle installla kwjf;lkasjfoas;lfj as;ldkfsdlfk as;ldkf`
 9. `psql -U postgres`
 10. `create database districts;`
 11. `\q`
