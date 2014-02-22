@@ -10,14 +10,15 @@ See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 
 ## To get started:
 
+Clone this repository. The rest of the commands should happen in the directory
+containing this project.
+
 ### Vagrant
 
 1. [Download](https://www.virtualbox.org/wiki/Downloads) & Install Virtualbox
 2. [Download](http://www.vagrantup.com/) & Install Vagrant
-2a. `vagrant plugin install vagrant-berkshelf`
-2b. `vagrant plugin install vagrant-omnibus`
-3. `bundle`
-4. `bundle exec berks`
+3. `vagrant plugin install vagrant-berkshelf`
+4. `vagrant plugin install vagrant-omnibus`
 5. `vagrant up`
 6. `vagrant ssh`
 7. `cd WhatsMyDistrict`
