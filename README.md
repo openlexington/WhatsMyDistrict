@@ -56,5 +56,12 @@ containing this project.
         Shapefile type: Polygon
         Postgis type: MULTIPOLYGON[2]
 
+Another example:
+
+        ~/Downloads/PostOffice
+        % shp2pgsql -c -D -s 4269 -I PostOffice.shp post_office > PostOffice.sql
+        Shapefile type: Point
+        Postgis type: POINT[2]
+
 3. In psql, drop the table you will be updating.
 4. Run `psql -d database -f file.sql`, for example `psql -p 5432 -h localhost -d districts -f VotingPrecinct.sql`.
