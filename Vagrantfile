@@ -37,8 +37,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.json = {
                     postgresql: {version: '9.1',
                                  password: {postgres: 'sorandomwow'},
-                                 pg_hba: [{type: 'local', db: 'all',
-                                   user: 'postgres', addr: nil,
+                                 pg_hba: [{type: 'host', db: 'all',
+                                   user: 'postgres', addr: '127.0.0.1/32',
                                    method: 'trust'}]
                                 },
                     postgis: {template_name: 'blake'},
