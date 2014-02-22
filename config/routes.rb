@@ -59,7 +59,7 @@ class DistrictApp < Sinatra::Base
   def split_address(address)
     ary = address.split(/\s+/)
     number = ary.shift
-    street_type = ary.pop.downcase.to_sym
+    street_type = (ary.pop || '').downcase.to_sym
     street_name = ary.join(' ')
     if StreetTypes::STREET_TYPES.key?(street_type)
       street_type = StreetTypes::STREET_TYPES[street_type]
