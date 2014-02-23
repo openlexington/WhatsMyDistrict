@@ -1,5 +1,5 @@
 {
-  "sources": {
+  "dependencies": {
     "annoyances": {
       "locked_version": "1.0.0"
     },

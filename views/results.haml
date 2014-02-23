@@ -107,9 +107,10 @@
     - if @hospitals
       %section
         %h3 Nearest Hospitals
-        - if @hospitals.empty? || (assoc=@hospitals.first).assoc_name.nil? || assoc.assoc_name.blank?
+        - if @hospitals.empty? || (hospital=@hospitals.first).name.nil? || hospital.name.blank?
           %p none
         - else
-          %ul
-            - @hospitals.each do |assoc|
-              %li= assoc.assoc_name
+          %ol
+            - @hospitals.each do |hospital|
+              %li
+                = hospital.name
