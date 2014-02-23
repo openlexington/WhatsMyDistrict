@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                                    user: 'postgres', addr: nil,
                                    method: 'trust'}]
                                 },
-                    postgis: {template_name: 'blake'},
+                    postgis: {template_name: 'postgres'},
                     rvm: {rubies: ['1.9.3'], default_ruby: 'ruby-1.9.3-p484',
                           code: 'rvm use 1.9.3',
                           global_gems: [{name: 'rake'}, {name: 'bundler'}]}
