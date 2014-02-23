@@ -103,3 +103,14 @@
           %ul
             - @neighborhoods.each do |assoc|
               %li= assoc.assoc_name
+
+    - if @hospitals
+      %section
+        %h3 Nearest Hospitals
+        - if @hospitals.empty? || (hospital=@hospitals.first).name.nil? || hospital.name.blank?
+          %p none
+        - else
+          %ol
+            - @hospitals.each do |hospital|
+              %li
+                = hospital.name

@@ -45,6 +45,7 @@ class DistrictApp < Sinatra::Base
     @house = HouseDistrict.first_for_geocode(geocode)
     @voting = VotingDistrict.first_for_geocode(geocode)
     @neighborhoods = NeighborhoodAssociation.all_for_geocode(geocode)
+    @hospitals = Hospitals.all_for_geocode(geocode)
     haml :results
   end
 
