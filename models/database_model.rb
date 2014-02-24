@@ -1,5 +1,6 @@
 class DatabaseModel
-  DB = Sequel.postgres('districts', user: 'postgres', host: 'localhost')
+  DB = Sequel.postgres(ENV['WMD_DB_NAME'], user: ENV['WMD_DB_USER'],
+    host: ENV['WMD_DB_HOST'], password: ENV['WMD_DB_PASSWD'])
 
   def initialize attributes
     attributes.each {|k,v| self.send("#{k}=", v) }

@@ -50,5 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                           global_gems: [{name: 'rake'}, {name: 'bundler'}]}
                   }
     end
+    district.vm.provision 'shell',
+          inline: "cd /home/vagrant/WhatsMyDistrict && cp dotenv.sample .env"
   end
 end

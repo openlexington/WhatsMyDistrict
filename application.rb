@@ -5,6 +5,9 @@ require 'bundler/setup'
 require 'routes'
 require 'app_config'
 require 'airbrake'
+require 'dotenv'
+
+Dotenv.load
 
 Dir.glob(File.join("models/**")) {|f| require "./#{f}"}
 

@@ -47,6 +47,34 @@ containing this project.
 4. Create the database: `createdb -p 5432 -h localhost districts`
 5. Add necessary postgis functions to the database: `psql -p 5432 -h localhost -d districts -f /usr/local/share/postgis/postgis.sql` and `psql -p 5432 -h localhost -d districts -f /usr/local/share/postgis/spatial_ref_sys.sql` -- thanks to [PostGres - PostGIS on OS X Lion](http://lukeberndt.com/2011/postgres-postgis-on-osx-lion/).
 
+### Linux (Ubuntu-based, no vagrant)
+
+- `sudo apt-get install postgresql-9.1 postgresql-9.1-postgis postgis libpq`
+- `bundle install`
+- Create the database:
+```
+$ sudo -u postgres psql
+# \password
+  sorandomwow
+  sorandomwow
+# create database districts;
+# \q
+```
+- Add PostGIS extensions:
+```
+postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis-*/postgis.sql`
+postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis-*/spatial_ref_sys.sql
+```
+- `psql -U postgres -d districts < sql/wmd.sql`
+- `cp dotenv.sample .env`
+- `foreman start`
+- Open browser to [http://localhost:4567](http://localhost:4567).
+- Hack.
+
+### Production
+
+Remember to either set relevant values in `.env` file or to set ENV values.
+
 ## To update the database:
 
 1. Download the new shape file from [data.lexingtonky.gov](http://data.lexingtonky.gov) -- for example, under Community, [Board of Elections - Voting Precincts](https://opendatalex.s3.amazonaws.com/2013-03-21T200744/VotingPrecinct.zip).

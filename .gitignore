@@ -7,3 +7,4 @@ log/unicorn.stdout.log
 puma.rb
 tmp/pids/unicorn.pid
 .vagrant
+.env
