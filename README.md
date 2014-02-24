@@ -71,6 +71,10 @@ postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis
 - Open browser to [http://localhost:4567](http://localhost:4567).
 - Hack.
 
+### Production
+
+Remember to either set relevant values in `.env` file or to set ENV values.
+
 ## To update the database:
 
 1. Download the new shape file from [data.lexingtonky.gov](http://data.lexingtonky.gov) -- for example, under Community, [Board of Elections - Voting Precincts](https://opendatalex.s3.amazonaws.com/2013-03-21T200744/VotingPrecinct.zip).
