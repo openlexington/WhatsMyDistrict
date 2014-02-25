@@ -13,7 +13,8 @@
       %h1.text-center
         %a{href: "/"} What's My District
       - flash_types.select{ |kind| flash.has?(kind) }.each do |kind|
-        .flash{class: kind}
+        %div{class: "alert alert-#{kind} fadeout", 'data-dismiss' => 'alert'}
+          %button.close &times;
           = flash[kind]
       = yield
       %footer

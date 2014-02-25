@@ -30,12 +30,14 @@ class DistrictApp < Sinatra::Base
   end
 
   get '/' do
-    flash[:notice] = "Thanks for signing up!"
     haml :index
   end
 
   get '/results' do
-    redirect to('/') if params[:address].blank?
+    if params[:address].blank?
+      flash[:error] = "Address can't be blank."
+      redirect to('/')
+    end
     @address = params[:address].strip
     geocode = get_geocode(@address + " Lexington KY")
     @address_split = split_address(@address)
@@ -51,16 +53,6 @@ class DistrictApp < Sinatra::Base
     @neighborhoods = NeighborhoodAssociation.all_for_geocode(geocode)
     @hospitals = Hospitals.all_for_geocode(geocode)
     haml :results
-  end
-
-  post '/message' do
-    @message = Message.create params[:message]
-    if @message.save
-      flash[:success] = "Message saved successfully."
-    else
-      flash[:error] = "Invalid message"
-    end
-    redirect '/'
   end
 
   private
