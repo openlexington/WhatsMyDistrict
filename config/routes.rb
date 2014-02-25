@@ -1,6 +1,7 @@
 require 'sinatra/twitter-bootstrap'
 require 'sass'
 require 'airbrake'
+require 'rack-flash'
 
 class SassEngine < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/../assets/stylesheets'
@@ -16,6 +17,8 @@ class DistrictApp < Sinatra::Base
   require 'sequel'
   require 'street_types.rb'
   use SassEngine
+  enable :sessions
+  use Rack::Flash, :sweep => true
   register Sinatra::Twitter::Bootstrap::Assets
 
   configure :production do
@@ -27,6 +30,7 @@ class DistrictApp < Sinatra::Base
   end
 
   get '/' do
+    flash[:notice] = "Thanks for signing up!"
     haml :index
   end
 
@@ -47,6 +51,16 @@ class DistrictApp < Sinatra::Base
     @neighborhoods = NeighborhoodAssociation.all_for_geocode(geocode)
     @hospitals = Hospitals.all_for_geocode(geocode)
     haml :results
+  end
+
+  post '/message' do
+    @message = Message.create params[:message]
+    if @message.save
+      flash[:success] = "Message saved successfully."
+    else
+      flash[:error] = "Invalid message"
+    end
+    redirect '/'
   end
 
   private
