@@ -1,6 +1,8 @@
 lock '3.1.0'
 set :application, 'whatsmydistrict'
 set :repo_url, 'https://github.com/openlexington/WhatsMyDistrict.git'
+set :branch, :master
+set :deploy_to, '/opt/whatsmydistrict'
 set :linked_dirs, %w{log tmp/pids tmp/sockets}
 set :linked_files, %w{models/database_model.rb}
 
