@@ -34,12 +34,12 @@ class DistrictApp < Sinatra::Base
   end
 
   get '/results' do
-    if params[:address].blank?
-      flash[:error] = "Address can't be blank."
-      redirect to('/')
-    end
     @address = params[:address].strip
     geocode = get_geocode(@address + " Lexington KY")
+    unless geocode
+      flash[:error] = 'We were unable to locate that address.  Please make sure that you have entered it correctly.'
+      redirect to('/')
+    end
     @address_split = split_address(@address)
     @council = CouncilDistrict.first_for_geocode(geocode)
     @magistrate = MagistrateDistrict.first_for_geocode(geocode)
@@ -59,8 +59,10 @@ class DistrictApp < Sinatra::Base
 
   def get_geocode address
     geocode_results = Geocoder.search(address)
-    location = geocode_results.first.geometry['location']
-    Geocode.new(location['lat'], location['lng'])
+    if geocode_results.first.types.include?('street_address')
+      location = geocode_results.first.geometry['location']
+      Geocode.new(location['lat'], location['lng'])
+    end
   end
 
   # return an array of the address split by spaces?
