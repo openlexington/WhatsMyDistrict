@@ -1,6 +1,7 @@
 require 'sinatra/twitter-bootstrap'
 require 'sass'
 require 'airbrake'
+require 'rack-flash'
 
 class SassEngine < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/../assets/stylesheets'
@@ -16,6 +17,8 @@ class DistrictApp < Sinatra::Base
   require 'sequel'
   require 'street_types.rb'
   use SassEngine
+  enable :sessions
+  use Rack::Flash, :sweep => true
   register Sinatra::Twitter::Bootstrap::Assets
 
   configure :production do
@@ -31,9 +34,12 @@ class DistrictApp < Sinatra::Base
   end
 
   get '/results' do
-    redirect to('/') if params[:address].blank?
     @address = params[:address].strip
     geocode = get_geocode(@address + " Lexington KY")
+    unless geocode
+      flash[:error] = 'We were unable to locate that address.  Please make sure that you have entered it correctly.'
+      redirect to('/')
+    end
     @address_split = split_address(@address)
     @council = CouncilDistrict.first_for_geocode(geocode)
     @magistrate = MagistrateDistrict.first_for_geocode(geocode)
@@ -53,8 +59,10 @@ class DistrictApp < Sinatra::Base
 
   def get_geocode address
     geocode_results = Geocoder.search(address)
-    location = geocode_results.first.geometry['location']
-    Geocode.new(location['lat'], location['lng'])
+    if geocode_results.first.types.include?('street_address')
+      location = geocode_results.first.geometry['location']
+      Geocode.new(location['lat'], location['lng'])
+    end
   end
 
   # return an array of the address split by spaces?

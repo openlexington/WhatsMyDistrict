@@ -24,5 +24,9 @@ class DistrictApp < Sinatra::Base
         ROMAN_NOOMS.include?(piece) ? piece : piece.capitalize
       end.join(' ')
     end
+
+    def flash_types
+      [:success, :notice, :warning, :error]
+    end
   end
 end
