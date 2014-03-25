@@ -15,3 +15,4 @@ gem "berkshelf", "~> 2.0.14"
 gem 'foreman', '~> 0.63.0'
 gem "dotenv", "~> 0.10.0"
 gem 'rack-flash3'
+gem 'sinatra-contrib'
