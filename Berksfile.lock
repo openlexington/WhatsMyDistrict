@@ -1,15 +1,15 @@
 {
-  "dependencies": {
+  "sources": {
     "annoyances": {
       "locked_version": "1.0.0"
     },
     "database": {
-      "locked_version": "1.6.0"
+      "locked_version": "2.0.0"
     },
     "rvm": {
       "locked_version": "0.9.1",
       "git": "git://github.com/fnichol/chef-rvm.git",
-      "ref": "26ad5c043c70ea98855a049fbbacb7ffc5ad73e3"
+      "ref": "87f58d428c160337c1581ed1130a1a53d94e5126"
     },
     "nginx": {
       "locked_version": "0.101.6"
@@ -21,16 +21,16 @@
       "locked_version": "0.2.4"
     },
     "imagemagick": {
-      "locked_version": "0.2.2"
+      "locked_version": "0.2.3"
     },
     "build-essential": {
       "locked_version": "1.4.2"
     },
     "git": {
-      "locked_version": "2.9.0"
+      "locked_version": "2.10.0"
     },
     "sudo": {
-      "locked_version": "2.3.0"
+      "locked_version": "2.5.0"
     },
     "tmux": {
       "locked_version": "1.4.0"
@@ -39,13 +39,22 @@
       "locked_version": "1.1.2"
     },
     "mysql": {
-      "locked_version": "4.0.20"
+      "locked_version": "4.1.1"
     },
     "openssl": {
       "locked_version": "1.1.0"
     },
+    "homebrew": {
+      "locked_version": "1.5.4"
+    },
+    "windows": {
+      "locked_version": "1.30.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.5"
+    },
     "aws": {
-      "locked_version": "1.0.0"
+      "locked_version": "2.1.0"
     },
     "xfs": {
       "locked_version": "1.1.0"
@@ -60,16 +69,16 @@
       "locked_version": "1.5.8"
     },
     "yum": {
-      "locked_version": "3.1.0"
+      "locked_version": "3.1.2"
     },
     "yum-epel": {
-      "locked_version": "0.3.2"
+      "locked_version": "0.3.4"
     },
     "bluepill": {
       "locked_version": "2.3.1"
     },
     "rsyslog": {
-      "locked_version": "1.10.2"
+      "locked_version": "1.11.0"
     },
     "ohai": {
       "locked_version": "1.0.2"
@@ -78,13 +87,7 @@
       "locked_version": "2.3.8"
     },
     "dmg": {
-      "locked_version": "2.1.4"
-    },
-    "windows": {
-      "locked_version": "1.30.0"
-    },
-    "chef_handler": {
-      "locked_version": "1.1.4"
+      "locked_version": "2.2.0"
     }
   }
 }

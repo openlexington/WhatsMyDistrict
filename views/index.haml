@@ -6,3 +6,7 @@
       Enter your address to find your council, school, and
       other districts.
     = haml :search_form
+- content_for :after_body do
+  %script{type:"text/javascript", src:"https://maps.googleapis.com/maps/api/js?sensor=false"}
+  %script{type: "text/javascript", src: "js/geolocation.js"}
+

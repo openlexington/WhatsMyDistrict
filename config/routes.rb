@@ -16,6 +16,10 @@ class DistrictApp < Sinatra::Base
   require 'geocoder'
   require 'sequel'
   require 'street_types.rb'
+  require "sinatra/content_for"
+
+  helpers Sinatra::ContentFor
+
   use SassEngine
   enable :sessions
   use Rack::Flash, :sweep => true
