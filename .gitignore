@@ -4,7 +4,10 @@
 db.out
 log/unicorn.stderr.log
 log/unicorn.stdout.log
+log/thin.log
 puma.rb
 tmp/pids/unicorn.pid
+*.pid
+unicorn.rb
 .vagrant
 .env

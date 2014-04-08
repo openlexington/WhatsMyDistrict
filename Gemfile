@@ -9,7 +9,7 @@ gem 'rake', "~> 10.0.4"
 gem 'haml'
 gem 'sinatra-twitter-bootstrap'
 gem 'compass-rails', '~> 1.0.3'
-gem 'unicorn', "~> 4.6.2"
+gem 'thin', '~> 1.6.2'
 gem "airbrake", "~> 3.1.12"
 gem "berkshelf", "~> 2.0.14"
 gem 'foreman', '~> 0.63.0'
