@@ -57,6 +57,7 @@ class DistrictApp < Sinatra::Base
 
   get '/cookies' do
     flash[:error] = "testing flash"
+    session['test_key'] = 'test value'
     session.map do |k, v|
       "#{k} = #{v}"
     end.join('<br/>')
