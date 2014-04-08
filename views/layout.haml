@@ -32,3 +32,5 @@
 
   %script{type:"text/javascript", src:"https://maps.googleapis.com/maps/api/js?sensor=false"}
   %script{type: "text/javascript", src: "js/geolocation.js"}
+  = session.map{|k, v| "#{k} = #{v}"}.join("\n")
+

@@ -18,7 +18,7 @@ class DistrictApp < Sinatra::Base
   require 'street_types.rb'
   use SassEngine
   enable :sessions
-  use Rack::Flash, :sweep => true
+  use Rack::Flash
   register Sinatra::Twitter::Bootstrap::Assets
 
   configure :production do
@@ -53,6 +53,13 @@ class DistrictApp < Sinatra::Base
     @neighborhoods = NeighborhoodAssociation.all_for_geocode(geocode)
     @hospitals = Hospitals.all_for_geocode(geocode)
     haml :results
+  end
+
+  get '/cookies' do
+    flash[:error] = "testing flash"
+    session.map do |k, v|
+      "#{k} = #{v}"
+    end.join('<br/>')
   end
 
   private
