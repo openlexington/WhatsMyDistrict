@@ -14,7 +14,6 @@ include_recipe 'build-essential'
 include_recipe 'postgresql::ruby'
 include_recipe 'postgresql::client'
 include_recipe 'git'
-include_recipe 'xml::default'
 
 package 'libxml2-dev' do
   action :install
@@ -72,14 +71,10 @@ execute 'enable postgis in template1' do
   command 'echo "CREATE EXTENSION IF NOT EXISTS postgis;" | psql -d template1'
 end
 
-node[:postgresql_databases].each do |db, spec|
-  if spec[:postgis]
-    execute "enable postgis on #{db}" do
-      user 'postgres'
-      command 'echo "CREATE EXTENSION IF NOT EXISTS postgis;" ' +
-              "| psql -d #{db}"
-    end
-  end
+execute "enable postgis on whatsmydistrict" do
+  user 'postgres'
+  command 'echo "CREATE EXTENSION IF NOT EXISTS postgis;" ' +
+          "| psql -d whatsmydistrict"
 end
 
 # application
