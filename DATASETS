@@ -1,0 +1,34 @@
+DATASETS
+
+council
+http://data.lexingtonky.gov/dataset/board-of-elections-council-district
+
+voting
+http://data.lexingtonky.gov/dataset/board-of-elections-voting-precincts
+
+magistrate
+http://data.lexingtonky.gov/dataset/board-of-elections-magesterial-district
+
+elementary
+http://data.lexingtonky.gov/dataset/school-district-elementary
+
+middle
+http://data.lexingtonky.gov/dataset/school-district-middle
+
+high
+http://data.lexingtonky.gov/dataset/school-district-high
+
+neighborhood assoc
+http://data.lexingtonky.gov/dataset/neighborhoodassoc
+
+school board
+http://data.lexingtonky.gov/dataset/board-of-elections-school-board-district
+
+house
+http://data.lexingtonky.gov/dataset/board-of-elections-state-house-district
+
+senate
+http://data.lexingtonky.gov/dataset/board-of-elections-state-senate-district
+
+hospital
+http://data.lexingtonky.gov/dataset/hospital
