@@ -31,9 +31,6 @@ link '/usr/bin/node' do
   to '/usr/bin/nodejs'
 end
 
-# database
-########################################
-
 node.set['authorization']['sudo']['groups'] = ['sudo', 'admin', 'sysadmin']
 node.set['authorization']['sudo']['passwordless'] = true
 node.set['authorization']['sudo']['include_sudoers_d'] = true
@@ -61,6 +58,28 @@ end
 
 package 'libcurl4-openssl-dev' do
   action :install
+end
+
+
+# database
+########################################
+
+include_recipe 'database::postgresql'
+package 'postgresql-9.3-postgis-2.1'
+
+execute 'enable postgis in template1' do
+  user 'postgres'
+  command 'echo "CREATE EXTENSION IF NOT EXISTS postgis;" | psql -d template1'
+end
+
+node[:postgresql_databases].each do |db, spec|
+  if spec[:postgis]
+    execute "enable postgis on #{db}" do
+      user 'postgres'
+      command 'echo "CREATE EXTENSION IF NOT EXISTS postgis;" ' +
+              "| psql -d #{db}"
+    end
+  end
 end
 
 # application

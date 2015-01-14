@@ -11,3 +11,5 @@ tmp/pids/unicorn.pid
 unicorn.rb
 .vagrant
 .env
+
+Berksfile.lock
