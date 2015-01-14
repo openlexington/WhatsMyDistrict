@@ -97,7 +97,7 @@
     - if @neighborhoods
       %section
         %h3 Neighborhood Association
-        - if @neighborhoods.empty? || (assoc=@neighborhoods.first).assoc_name.nil? || assoc.assoc_name.blank?
+        - if @neighborhoods.empty? || (assoc=@neighborhoods.first).assoc_name.nil? || assoc.assoc_name.empty?
           %p none
         - else
           %ul
@@ -107,7 +107,7 @@
     - if @hospitals
       %section
         %h3 Nearest Hospitals
-        - if @hospitals.empty? || (hospital=@hospitals.first).name.nil? || hospital.name.blank?
+        - if @hospitals.empty? || (hospital=@hospitals.first).name.nil? || hospital.name.empty?
           %p none
         - else
           %ol
