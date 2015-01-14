@@ -82,7 +82,7 @@ postgresql_database 'whatsmydistrict' do
   action :create
 end
 
-postgresql_database_user(username) do
+postgresql_database_user 'whatsmydistrict' do
   username 'whatsmydistrict'
   database_name 'whatsmydistrict'
   privileges [:all]
