@@ -59,17 +59,18 @@ package 'libcurl4-openssl-dev' do
   action :install
 end
 
-
 # database
 ########################################
 
+node.set['postgresql']['password']['postgres'] = 'password'
+
+include_recipe 'postgresql::server'
 include_recipe 'database::postgresql'
 package 'postgresql-9.3-postgis-2.1'
 
 default_connection = {username: 'postgres', host: 'localhost'}
 
 postgresql_database_user 'whatsmydistrict' do
-  username 'whatsmydistrict'
   password 'whatsmydistrict'
   connection default_connection
   action :create
@@ -77,13 +78,11 @@ end
 
 postgresql_database 'whatsmydistrict' do
   owner 'whatsmydistrict'
-  database_name 'whatsmydistrict'
   connection default_connection
   action :create
 end
 
 postgresql_database_user 'whatsmydistrict' do
-  username 'whatsmydistrict'
   database_name 'whatsmydistrict'
   privileges [:all]
   connection default_connection

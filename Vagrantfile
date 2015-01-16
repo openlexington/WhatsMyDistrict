@@ -20,12 +20,6 @@ Vagrant.configure('2') do |config|
       chef.log_level = :debug
       chef.custom_config_path = 'chef_solo.config'
       chef.run_list = ['whatsmydistrict::default']
-      chef.json = {
-        postgresql: {
-          version: '9.3',
-          password: {postgres: 'password'}
-        }
-      }
     end
   end
 end
