@@ -1,0 +1,12 @@
+db:
+  image: mdillon/postgis
+  ports:
+    - 5432:5432
+
+web:
+  build: .
+  command: bundle exec puma
+  ports:
+    - 80:4567
+  links:
+    - db
