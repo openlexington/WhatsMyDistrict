@@ -1,5 +1,7 @@
 # What's My District?
 
+[![Build Status](https://travis-ci.org/openlexington/WhatsMyDistrict.svg?branch=master)](https://travis-ci.org/openlexington/WhatsMyDistrict)
+
 See an example at [whatsmydistrict.org](http://whatsmydistrict.org/).
 
 ## Requirements
