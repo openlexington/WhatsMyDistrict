@@ -1,6 +1,6 @@
 # .env sample -- add your postgres config and save this file as `.env`.
 # You may also set these environment variables instead of using a `.env` file.
-WMD_DB_NAME=districts
+WMD_DB_NAME=whatsmydistricts
 WMD_DB_HOST=localhost
 WMD_DB_USER=postgres
 WMD_DB_PASSWD=sorandomwow
