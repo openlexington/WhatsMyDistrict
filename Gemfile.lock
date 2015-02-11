@@ -4,7 +4,7 @@ GEM
     airbrake (3.1.16)
       builder
       multi_json
-    backports (3.6.0)
+    backports (3.6.4)
     builder (3.2.2)
     capistrano (3.1.0)
       i18n
