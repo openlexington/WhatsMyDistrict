@@ -62,8 +62,8 @@ $ sudo -u postgres psql
 ```
 - Add PostGIS extensions:
 ```
-postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis-*/postgis.sql`
-postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis-*/spatial_ref_sys.sql
+sudo -u postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis-*/postgis.sql`
+sudo -u postgres psql -U postgres -d districts -f `pg_config --sharedir`/contrib/postgis-*/spatial_ref_sys.sql
 ```
 - `psql -U postgres -d districts < sql/wmd.sql`
 - `cp dotenv.sample .env`
